@@ -1,120 +1,77 @@
 // 1. Copy and paste your prototype in here and refactor into class syntax.
 
-//GameObject
-class GameObject{
-    constructor(opt){
-        this.createdAt = opt.createdAt;
-        this.name = opt.name;
-        this.dimensions = opt.dimensions;
-        this.destroy = function(){
-              return `${this.name} was removed from the game.`;
-          }
-      }
-  }
+// function CuboidMaker(opts){
+//     this.length = opts.length;
+//     this.width = opts.width;
+//     this.height = opts.height;
+//   }
 
 
-//CharacterStats
-class CharacterStats extends GameObject {
-      constructor(stats){
-            super(stats)
-          this.healthPoints = stats.healthPoints;
-      }
-      takeDamage () {
-          return `${this.name} took damage.`;
-      }
-      greet(GameObject){
-          return `${GameObject.name} offers a greeting in ${GameObject.language}`
-      }
-  }
+// class Cuboid extends CuboidMaker{
+//     constructor(cuboidOpt){
+//         super(cuboidOpt)
+//         this.volume = function (){
+//             return `${opts.length} * ${opts.width} * ${opts.height}`;
+//         }
+//         this.surfaceArea = function (){
+//             return `2 * (${opts.length} * ${opts.width} + ${opts.length} * ${opts.height} + ${opts.width} * ${opts.height})`;
+//         }
+//     }
+// }
 
-//Humanoid 
-class Humanoid extends CharacterStats {
-    constructor(humanoidOpt){
-        super(humanoidOpt)
-        this.team= humanoidOpt.team;
-        this.weapons = humanoidOpt.weapons;
-        this.language = humanoidOpt.language;
-        }
-        greet (){
-            return `${this.name} offers a greeting in ${this.language}.`;
-        }
-        
-    }
+/* == Step 2: Volume Method ==
+  Create a method using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   
-      
-const mage = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-    length: 2,
-    width: 1,
-    height: 1,
-},
-    healthPoints: 5,
-    name: 'Bruce',
-    team: 'Mage Guild',
-    weapons: [
-    'Staff of Shamalama',
-],
-language: 'Common Tongue',
-});
+  Formula for cuboid volume: length * width * height
+*/
+
+// CuboidMaker.prototype.Volume = function (){
+//     return `${opts.length} * ${opts.width} * ${opts.height}`;
+//   }
+
+/* == Step 3: Surface Area Method ==
+  Create another method using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
+
+  Formula for cuboid surface area of a cube: 2 * (length * width + length * height + width * height)
+*/
+
+// CuboidMaker.prototype.SurfaceArea = function(){
+//     return `2 * (${opts.length} * ${opts.width} + ${opts.length} * ${opts.height} + ${opts.width} * ${opts.height})`;
+//   }
+
+/* == Step 4: Create a new object that uses CuboidMaker ==
+  Create a cuboid object that uses the new keyword to use our CuboidMaker constructor
+  Add properties and values of length: 4, width: 5, and height: 5 to cuboid.   
+*/
 
 
-const swordsman = new Humanoid({
-createdAt: new Date(),
-dimensions: {
-length: 2,
-width: 2,
-height: 2,
-},
-healthPoints: 15,
-name: 'Sir Mustachio',
-team: 'The Round Table',
-weapons: [
-'Giant Sword',
-'Shield',
-],
-language: 'Common Tongue',
-});
-
-const archer = new Humanoid({
-createdAt: new Date(),
-dimensions: {
-length: 1,
-width: 2,
-height: 4,
-},
-healthPoints: 10,
-name: 'Lilith',
-team: 'Forest Kingdom',
-weapons: [
-'Bow',
-'Dagger',
-],
-language: 'Elvish',
-});
-
-
-console.log(mage.createdAt); // Today's date
-console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-console.log(swordsman.healthPoints); // 15
-console.log(mage.name); // Bruce
-console.log(swordsman.team); // The Round Table
-console.log(mage.weapons); // Staff of Shamalama
-console.log(archer.language); // Elvish
-console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-console.log(mage.takeDamage()); // Bruce took damage.
-console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+class CuboidMaker{
+    constructor(length, width, height){
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    volume = function (){
+        return this.length * this.width * this.height;
+    }
+    surfaceArea = function (){
+        return 2 * this.length * this.width + this.length * this.height + this.width * this.height;
+    }
+}
 
 
 
+const cuboid = new CuboidMaker(4, 5, 5);
+//     dimensions: {
+//       length: 4,
+//       width: 5,
+//       height: 5
+//     }
+//   });
 
-
-
-
-
-/////////////////////////////////////
 
 // Test your volume and surfaceArea methods by uncommenting the logs below:
+console.log(cuboid.height);
 console.log(cuboid.volume()); // 100
 console.log(cuboid.surfaceArea()); // 130
 

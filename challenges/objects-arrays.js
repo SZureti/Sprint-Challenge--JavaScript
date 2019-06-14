@@ -12,6 +12,15 @@
 
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceous
 
+// function Dinosaur(attr){
+//   this.name = attr.name;
+//   this.diet = attr.diet;
+//   this.weight = attr.weight;
+//   this.length = attr.length;
+//   this.period = attr.period;
+// }
+
+
 let tyrannosaurus = {
   "name": "Tyrannosaurus",
   "diet": "carnivorous",
@@ -159,26 +168,11 @@ console.log(lowerCase);
 The zoos are concerned about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-// const lowerPopulation = zooAnimals[i].population  => for(let i = 0; i < 5; i++) {
-//   return `lowerPopulation.push(zooAnimals[i].population)`;
-// }
 
-//  lowerPopulation = [];
 
 const lowerPopulation = zooAnimals.filter(i => { return i.population < 5;
 });
 
-// = function(){
-//   for(let i = 0; i < 5; i++) {
-//     console.log(lowerPopulation.push(zooAnimals[i].population));
-//  }
-// }
-
-// function lowerPopulation(){
-//   for(let i = 0; i < 5; i++) {
-//      console.log(lowerPopulation.push(zooAnimals[i].population));
-//   }
-// }
 console.log(lowerPopulation);
 
 /* Request 4: .reduce() 
