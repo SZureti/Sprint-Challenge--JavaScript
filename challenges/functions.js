@@ -7,7 +7,7 @@
   * In the body of the function return the callback with the two parameters that you created
 */
 function consume(junk, water, cb){
-
+  return cb(junk + water);
 }
 
 /* Step 2: Create several functions to callback with consume();
@@ -21,8 +21,8 @@ function add(x,y,cb){
 function multiply(x,y,cb){
   cb(x * y)
 }
-function greeting(firstName, lastName, cb){
-  cb(firstName + lastName)
+function greeting(firstName, lastName){
+  return "Hello " + firstName + " " + lastName + ", nice to meet you!";
 }
 greeting(firstName, lastName, function(greet){
   console.log(`Hello ${firstName} ${lastName}, nice to meet you!`);
