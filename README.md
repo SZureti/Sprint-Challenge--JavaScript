@@ -29,31 +29,91 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager
 
 1. Describe the biggest difference between `.forEach` & `.map`.
+   
+    `.map` returns a new array (modified from another array). `forEach` doesn't actually return anything, it just applies an action to each item on a list. 
 
 2. What is the difference between a function and a method?
 
+    A Method has to be called with a receiver from a class or object. Functions do not Functions make their own scope. Every function is an object and a function within a function is considered a method of that function but functions usually exist globally.
+
 3. What is closure?
+
+    Closure is basically a function. A local scope is create with the ability to reach outside of it's own scope with access to variables from the global scope. The global scope doesn't have access to it.  
 
 4. Describe the four rules of the 'this' keyword.
 
+    There's Window/Global Object Binding, which is when "this" is automatically set to the window or console. Next there's Implicit Binding, which is when "this" is provided implicitly by a preceding ".", then followed by a predefined method. After that there's New binding, which is when "this" is provided by a constructor function using the keyword "new".Lastly, Explicit binding is when "this" is provided explicitly by means of a built-in ".call" and/or "apply" method.
+
+* write out a code example of each explanation above
+*/
+
+//1. Window/Global Object Binding
+
+function sayName(name){
+    console.log(this);
+    return name;
+}
+sayName('Saipher');
+
+//2.  Implicit Binding
+
+const zureti = {
+    name: "Zureti",
+    say: function(){ console.log(`My last name is ${this.name}.`)}
+}
+zureti.say();
+
+//3.New binding
+
+function Person(att){
+    this.name = att.name;
+    this.age = att.age;
+}
+    let james = new Person({
+        name: "James",
+        age: 48,
+  });
+  console.log(james.name, james.age);
+
+//4. Explicit binding
+
+function Pet(obj){
+    Person.call(this, obj);
+    this.toy = obj.toy;
+}
+
+Pet.prototype.play = function(){
+    console.log(`${this.name} plays with his ${this.toy}.`);
+};
+
+let dom = new Pet({
+    name: "Dom",
+    age: 36,
+    toy: "bear"
+});
+
+dom.play();
+
 5. Why do we need super() in an extended class?
+
+    `super()` allows a sub-class to send new attributes to the parent class, which replaces `.call`.
 
 ## Project Set up
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add PM as collaborator on Github.
-- [ ] Clone your OWN version of Repo (Not Lambda's by mistake!).
-- [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
-- [ ] Create a pull request before you start working on the project requirements.  You will continuously push your updates throughout the project.
-- [ ] You are now ready to build this project with your preferred IDE
-- [ ] Implement the project on your Branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [x] Create a forked copy of this project.
+- [x] Add PM as collaborator on Github.
+- [x] Clone your OWN version of Repo (Not Lambda's by mistake!).
+- [x] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
+- [x] Create a pull request before you start working on the project requirements.  You will continuously push your updates throughout the project.
+- [x] You are now ready to build this project with your preferred IDE
+- [x] Implement the project on your Branch, committing changes regularly.
+- [x] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
 - [ ] Add your Project Manager as a Reviewer on the Pull-request
 - [ ] PM then will count the HW as done by  merging the branch back into master.
 
@@ -66,11 +126,11 @@ Your finished project must include all of the following requirements:
 
 ## Task 1: Objects and Arrays
 Test your knowledge of objects and arrays. 
-* [ ] Use the [objects-arrays.js](challenges/objects-arrays.js) link to get started.  Read the instructions carefully!
+* [x] Use the [objects-arrays.js](challenges/objects-arrays.js) link to get started.  Read the instructions carefully!
 
 ## Task 2: Functions
 This challenge takes a look at callbacks and closures as well as scope. 
-* [ ] Use the [functions.js](challenges/functions.js) link to get started. Read the instructions carefully!
+* [x] Use the [functions.js](challenges/functions.js) link to get started. Read the instructions carefully!
 
 ## Task 3: Prototypes
 Create constructors, bind methods, and create cuboids in this prototypes challenge.
